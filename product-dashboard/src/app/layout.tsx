@@ -8,7 +8,11 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://your-app.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Production Control Dashboard",
   description:
     "Internal dashboard for tracking work orders, machine assignments, and due dates.",
@@ -25,9 +29,27 @@ export const metadata: Metadata = {
     shortcut: "/icon.svg",
   },
   openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "Production Control Dashboard",
     title: "Production Control Dashboard",
     description:
       "Internal dashboard for tracking work orders, machine assignments, and due dates.",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Production Control Dashboard",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Production Control Dashboard",
+    description:
+      "Internal dashboard for tracking work orders, machine assignments, and due dates.",
+    images: ["/og.png"],
   },
   robots: {
     index: false,
